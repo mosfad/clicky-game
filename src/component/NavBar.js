@@ -15,3 +15,4 @@ function NavBar(props) {
 }
 
 export default NavBar;
+//Naming system for background colors seems off
