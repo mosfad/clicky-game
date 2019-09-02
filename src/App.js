@@ -14,13 +14,41 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <ul className="list-group">
-          {this.state.images.map(item => (
-            <li className="list-group-item" key={item.id}>
-              <ImageCard key={item.id} id={item.id} image={item.image} />
-            </li>
-          ))}
-        </ul>
+        <div className="container">
+          <div className="row">
+            {this.state.images.map((item, index) => {
+              if (index < 4) {
+                return (
+                  <div className="col-md-3">
+                    <ImageCard key={item.id} id={item.id} image={item.image} />
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <div className="row">
+            {this.state.images.map((item, index) => {
+              if (index > 3 && index < 8) {
+                return (
+                  <div className="col-md-3">
+                    <ImageCard key={item.id} id={item.id} image={item.image} />
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <div className="row">
+            {this.state.images.map((item, index) => {
+              if (index > 7) {
+                return (
+                  <div className="col-md-3">
+                    <ImageCard key={item.id} id={item.id} image={item.image} />
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
         <Footer />
       </div>
     );
