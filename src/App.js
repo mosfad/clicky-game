@@ -7,13 +7,16 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    images
+    images: images
   };
 
   handleOnClick = event => {
     //prevent default behavior
     event.preventDefault();
-    this.setState( { reshuffleImages() });
+    console.log("I was clicked........");
+    this.setState({ images: this.reshuffleImages() }).catch(err =>
+      console.log("error")
+    );
   };
 
   reshuffleImages = () => {
@@ -42,7 +45,12 @@ class App extends Component {
             {this.state.images.map((item, index) => {
               return index < 4 ? (
                 <div className="col-md-3">
-                  <ImageCard key={item.id} id={item.id} image={item.image} onClick={this.handleOnClick} />
+                  <ImageCard
+                    key={item.id}
+                    id={item.id}
+                    image={item.image}
+                    onClick={this.handleOnClick}
+                  />
                   {console.log("The key here is " + item.id)}
                 </div>
               ) : (
@@ -54,7 +62,12 @@ class App extends Component {
             {this.state.images.map((item, index) => {
               return index > 3 && index < 8 ? (
                 <div className="col-md-3">
-                  <ImageCard key={item.id} id={item.id} image={item.image} onClick={this.handleOnClick}/>
+                  <ImageCard
+                    key={item.id}
+                    id={item.id}
+                    image={item.image}
+                    onClick={this.handleOnClick}
+                  />
                   {console.log("The key here is " + item.id)}
                 </div>
               ) : (
@@ -66,7 +79,12 @@ class App extends Component {
             {this.state.images.map((item, index) => {
               return index > 7 ? (
                 <div className="col-md-3">
-                  <ImageCard key={item.id} id={item.id} image={item.image} onClick={this.handleOnClick} />
+                  <ImageCard
+                    key={item.id}
+                    id={item.id}
+                    image={item.image}
+                    onClick={this.handleOnClick}
+                  />
                   {console.log("The key here is " + item.id)}
                 </div>
               ) : (
