@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ImageCard from "./component/ImageCard";
-import NavBar from "./component/NavBar";
-import Footer from "./component/Footer";
+import ImageCard from "./components/ImageCard";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import images from "./images.json";
 import "./App.css";
 
@@ -16,7 +16,8 @@ class App extends Component {
     console.log("I was clicked........");
     const newImagesArray = this.reshuffleImages();
     console.log(newImagesArray);
-    /*this.setState({ images: this.reshuffleImages() }).catch(err =>
+    this.setState({ images: this.reshuffleImages() });
+    /*.catch(err =>
       console.log("error")
     );*/
   };
@@ -26,18 +27,19 @@ class App extends Component {
     const newImage = [];
 
     while (arrInd.length !== 0) {
-      let randNum = Math.floor(Math.random * 12);
+      let randNum = Math.floor(Math.random() * 12);
       if (!arrInd.includes(randNum)) continue;
       //store the index for this easy access
-      let currInd = arrInd[randNum];
+      let currInd = arrInd.indexOf(randNum);
       //shuffle a random image into  a different position
-      newImage.push(this.state.image[currInd]);
+      newImage.push(this.state.images[currInd]); // I am here..............
       //remove current index from the array index
-      arrInd.splice(randNum, 1);
+      arrInd.splice(currInd, 1);
     }
     console.log(newImage);
     return newImage;
   };
+
   render() {
     return (
       <div>
