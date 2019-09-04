@@ -14,9 +14,11 @@ class App extends Component {
     //prevent default behavior
     event.preventDefault();
     console.log("I was clicked........");
-    this.setState({ images: this.reshuffleImages() }).catch(err =>
+    const newImagesArray = this.reshuffleImages();
+    console.log(newImagesArray);
+    /*this.setState({ images: this.reshuffleImages() }).catch(err =>
       console.log("error")
-    );
+    );*/
   };
 
   reshuffleImages = () => {
