@@ -7,7 +7,9 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    images: images
+    images: images,
+    currScore: 0,
+    maxScore: 0
   };
 
   handleOnClick = event => {
@@ -20,6 +22,27 @@ class App extends Component {
     /*.catch(err =>
       console.log("error")
     );*/
+    //update the scores for the current round
+    if (event.target.is_clicked === "false") {
+      //console.log(event.target.is_clicked);
+      //user successfully clicked a previously unclicked image.
+      this.updateScore(event.target.is_clicked);
+      //LAST THING TO DO IS TO IS TO UPDATE is_clicked to "true" FOR THIS IMAGE COMPONENT!!!!
+      let indexClickedImage = this.getClickedImage(event.target.id);
+      //use destructuring to get images array of objects
+      const { images } = { ...this.state };
+      //get a reference to the array of objects
+      const currState = images;
+      //update the status of the clicked image.
+      currState[indexClickedImage].isClicked = "true";
+      //finally, update the state of the object
+      this.setState({ images: currState });
+    } else {
+      this.updateScore();
+    }
+    console.log("After updating the state of the images.....");
+    console.log(this.state.images);
+    //this.updateScore(this.state.images[0].isClicked);
   };
 
   reshuffleImages = () => {
@@ -40,10 +63,34 @@ class App extends Component {
     return newImage;
   };
 
+  updateScore = (loss = "true") => {
+    let currentScore = this.state.currScore;
+    let maximumScore = this.state.maxScore;
+    if (loss === "false") {
+      this.setState({ currScore: currentScore++, maxScore: maximumScore++ });
+    } else {
+      this.setState({ currScore: 0 });
+    }
+  };
+
+  getClickedImage = idOfImage => {
+    let indOfImage;
+    for (let i = 0; i < this.state.images.length; i++) {
+      //find the index of the image clicked in `images` array.
+      if (idOfImage === this.state.images[i].id) {
+        indOfImage = i;
+      }
+    }
+    return indOfImage;
+  };
+
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar
+          currScore={this.state.currScore}
+          maxScore={this.state.maxScore}
+        />
         <div className="container">
           <div className="row">
             {this.state.images.map((item, index) => {
@@ -53,6 +100,7 @@ class App extends Component {
                     key={item.id}
                     id={item.id}
                     image={item.image}
+                    is_clicked={item.isClicked}
                     onClick={this.handleOnClick}
                   />
                   {console.log("The key here is " + item.id)}

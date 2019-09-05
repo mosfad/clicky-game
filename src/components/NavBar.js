@@ -8,7 +8,7 @@ function NavBar(props) {
         Click An Image to Begin!
       </span>
       <span className="navbar-brand mb-0 h1 text-light">
-        Score: 0 | Top Score: 0
+        Score: {props.currScore} | Top Score: {props.maxScore}
       </span>
     </nav>
   );
