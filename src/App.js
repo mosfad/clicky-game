@@ -18,25 +18,32 @@ class App extends Component {
     console.log("I was clicked........");
     const newImagesArray = this.reshuffleImages();
     console.log(newImagesArray);
-    this.setState({ images: this.reshuffleImages() });
+    this.setState({ images: newImagesArray });
     /*.catch(err =>
       console.log("error")
     );*/
+    const clickState = event.target.getAttribute("data-clicked");
     //update the scores for the current round
-    if (event.target.is_clicked === "false") {
-      //console.log(event.target.is_clicked);
+    console.log(clickState);
+    if (clickState === "false") {
       //user successfully clicked a previously unclicked image.
-      this.updateScore(event.target.is_clicked);
-      //LAST THING TO DO IS TO IS TO UPDATE is_clicked to "true" FOR THIS IMAGE COMPONENT!!!!
+      console.log("A successful click.........");
+      this.updateScore(clickState);
+      //Update the click state of this image component
       let indexClickedImage = this.getClickedImage(event.target.id);
+      console.log(indexClickedImage);
       //use destructuring to get images array of objects
       const { images } = { ...this.state };
       //get a reference to the array of objects
       const currState = images;
+      console.log("Here is the current state of images object ");
+      console.log(currState);
+      console.log("-------------------------------------------");
+      console.log(currState[indexClickedImage]);
       //update the status of the clicked image.
       currState[indexClickedImage].isClicked = "true";
       //finally, update the state of the object
-      this.setState({ images: currState });
+      this.setState({ images: currState }); //SETTING THE STATE HERE MIGHT BE NULLIFYING THE RESHUFFLING IN `line 19`
     } else {
       this.updateScore();
     }
@@ -46,6 +53,7 @@ class App extends Component {
   };
 
   reshuffleImages = () => {
+    console.log("I am shuffling the image cards.......");
     const arrIndex = [];
     const newImage = [];
     let randNum;
@@ -66,22 +74,27 @@ class App extends Component {
   updateScore = (loss = "true") => {
     let currentScore = this.state.currScore;
     let maximumScore = this.state.maxScore;
+    console.log("Updating score after click.....");
     if (loss === "false") {
+      console.log("isClicked is false, so this click was a good one...");
       this.setState({ currScore: currentScore++, maxScore: maximumScore++ });
-    } else {
+    } else if (loss === "true") {
       this.setState({ currScore: 0 });
+      console.log("isClicked is true, so this click was a bad one....");
     }
   };
 
   getClickedImage = idOfImage => {
-    let indOfImage;
+    //console.log("id of image is " + typeof idOfImage);
+    //console.log("id of random image is " + typeof this.state.images[5].id);
+    let indexOfImage;
     for (let i = 0; i < this.state.images.length; i++) {
       //find the index of the image clicked in `images` array.
-      if (idOfImage === this.state.images[i].id) {
-        indOfImage = i;
+      if (parseInt(idOfImage) === this.state.images[i].id) {
+        indexOfImage = i;
       }
     }
-    return indOfImage;
+    return indexOfImage;
   };
 
   render() {
@@ -118,6 +131,7 @@ class App extends Component {
                     key={item.id}
                     id={item.id}
                     image={item.image}
+                    is_clicked={item.isClicked}
                     onClick={this.handleOnClick}
                   />
                   {console.log("The key here is " + item.id)}
@@ -135,6 +149,7 @@ class App extends Component {
                     key={item.id}
                     id={item.id}
                     image={item.image}
+                    is_clicked={item.isClicked}
                     onClick={this.handleOnClick}
                   />
                   {console.log("The key here is " + item.id)}

@@ -10,7 +10,7 @@ function ImageCard(props) {
           src={props.image}
           onClick={props.onClick}
           id={props.id}
-          is_clicked={props.is_clicked}
+          data-clicked={props.is_clicked}
         />
       </div>
     </div>
