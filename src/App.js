@@ -33,6 +33,8 @@ class App extends Component {
       let indexClickedImage = this.getClickedImage(event.target.id);
       console.log(indexClickedImage);
       //use destructuring to get images array of objects
+      console.log("Here is the current state");
+      console.log(this.state);
       const { images } = { ...this.state };
       //get a reference to the array of objects
       const currState = images;
