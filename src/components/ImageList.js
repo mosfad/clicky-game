@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Image from "./Image";
+import "./style.css";
 
 class ImageList extends Component {
   state = {};
@@ -12,16 +13,19 @@ class ImageList extends Component {
   };
   render() {
     return (
-      <div>
-        {this.props.images.map(singleImage => {
-          return (
-            <Image
-              key={singleImage.id}
-              imageInfo={singleImage}
-              onClickStatus={this.handleClickStatus}
-            />
-          );
-        })}
+      <div className="container">
+        <div className="row">
+          {this.props.images.map(singleImage => {
+            return (
+              <Image
+                className="col-md-3"
+                key={singleImage.id}
+                imageInfo={singleImage}
+                onClickStatus={this.handleClickStatus}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
