@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Image from "./Image";
 
 class ImageList extends Component {
-  state = { id: null, doubleClicked: false };
-  handleClickStatus = clickStatus => {
+  state = {};
+  handleClickStatus = imageClicked => {
+    console.log(imageClicked.id);
     this.setState(
-      { id: clickStatus.id, doubleClicked: clickStatus.click },
+      { id: imageClicked.id, doubleClicked: imageClicked.doubleClicked },
       () => this.props.onDoubleClick(this.state)
     );
   };

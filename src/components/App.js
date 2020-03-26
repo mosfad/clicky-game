@@ -12,9 +12,15 @@ class App extends Component {
     images
   };
 
-  handleOnDoubleClick = clickStatus => {
+  handleOnDoubleClick = imageClicked => {
+    const { id, doubleClicked } = imageClicked;
+    // console.log(id);
+    // console.log(doubleClicked);
+    console.log(imageClicked);
+    console.log(imageClicked.id);
+    console.log(imageClicked.doubleClicked);
     //Get the index of the item in `images` array to update ***
-    this.setState({ doubleClicked: clickStatus });
+    this.setState({ imageClicked });
   };
 
   render() {

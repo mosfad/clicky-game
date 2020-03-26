@@ -2,8 +2,10 @@ import React, { Component } from "react";
 
 class Image extends Component {
   state = {
+    id: 0,
     clicked: false,
-    doubleClicked: false
+    doubleClicked: false,
+    image: ""
   };
 
   componentDidMount() {
@@ -12,8 +14,8 @@ class Image extends Component {
   }
 
   handleClick = () => {
-    let clicked = this.state.clicked;
-    let doubleClicked = this.state.doubleClicked;
+    let clicked = this.state.clicked === true;
+    let doubleClicked = this.state.doubleClicked === true;
     if (!clicked && !doubleClicked) {
       //may need a callback here to make sure App component gets the correct clicked value
       this.setState({ clicked: true });
@@ -29,7 +31,7 @@ class Image extends Component {
       <div>
         <img
           alt="clicked-images"
-          src={this.props.imageInfo.image}
+          src={this.state.image}
           onClick={this.handleClick}
         />
       </div>
