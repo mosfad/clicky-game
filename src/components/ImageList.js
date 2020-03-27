@@ -3,20 +3,19 @@ import Image from "./Image";
 import "./style.css";
 
 class ImageList extends Component {
-  state = {
-    userScore: null
-  };
+  state = {};
   handleClickStatus = imageClicked => {
-    console.log(imageClicked.id);
+    //console.log(imageClicked.id);
     this.setState(
       {
         id: imageClicked.id,
-        doubleClicked: imageClicked.doubleClicked,
-        userScore: this.props.userScore
+        doubleClicked: imageClicked.doubleClicked
       },
       () => this.props.onDoubleClick(this.state)
     );
   };
+
+  componentDidUpdate(prevProps, prevState) {}
   render() {
     return (
       <div className="container">
@@ -24,7 +23,7 @@ class ImageList extends Component {
           {this.props.images.map(singleImage => {
             return (
               <Image
-                userScore={this.state.userScore}
+                userScore={this.props.userScore}
                 className="col-md-3"
                 key={singleImage.id}
                 imageInfo={singleImage}

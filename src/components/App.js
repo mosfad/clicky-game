@@ -15,12 +15,12 @@ class App extends Component {
     //const { id, doubleClicked } = imageClicked;
     // console.log(id);
     // console.log(doubleClicked);
-    console.log(imageClicked);
-    console.log(imageClicked.id);
-    console.log(imageClicked.doubleClicked);
+    // console.log(imageClicked);
+    // console.log(imageClicked.id);
+    // console.log(imageClicked.doubleClicked);
     //Get the index of the item in `images` array to update ***
     this.setState({ imageClicked }, () => {
-      if (this.state.imageClicked.doubleClicked === "false") {
+      if (!this.state.imageClicked.doubleClicked) {
         this.incrementScores();
         const imagesArr = this.shuffleImages(this.state.images);
         this.setState({ images: [...imagesArr] });
