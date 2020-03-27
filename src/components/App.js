@@ -26,6 +26,8 @@ class App extends Component {
         this.setState({ images: [...imagesArr] });
       } else {
         //reset the game, but keep top score.
+        //Get App to re-render by passing images Array(with clicked & doubleClicked properties set to false) to ImageList!!!
+        this.setState({ score: 0 });
       }
     });
   };
@@ -53,8 +55,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        Clicky Game!
+        <Header userScore={this.state.score} topScore={this.state.topScore} />
         <ImageList
+          userScore={this.state.score}
           onDoubleClick={this.handleOnDoubleClick}
           images={this.state.images}
         />

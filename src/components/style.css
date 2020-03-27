@@ -3,9 +3,17 @@
 }
 
 .container {
-  width: 60%;
+  width: 55%;
   padding-right: 25px;
   padding-left: 25px;
   margin-right: auto;
   margin-left: auto;
+}
+
+div.row {
+  justify-content: center;
+}
+
+.bg-primary {
+  background: blue !important;
 }

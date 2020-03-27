@@ -26,6 +26,8 @@ class Image extends Component {
       this.setState({ doubleClicked: true }, () =>
         this.props.onClickStatus(this.state)
       );
+    } else if (clicked && doubleClicked) {
+      this.setState({ clicked: false, doubleClicked: false });
     }
   };
 
