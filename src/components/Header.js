@@ -3,7 +3,7 @@ import React from "react";
 const Header = props => {
   return (
     <div>
-      <nav className="navbar navbar-dark sticky-top bg-primary">
+      <nav className="navbar navbar-dark fixed-top bg-primary">
         <a className="navbar-brand" href="#">
           Clicky Game
         </a>

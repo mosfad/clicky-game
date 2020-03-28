@@ -11,6 +11,15 @@ class App extends Component {
     images
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.score !== this.state.score &&
+      this.state.score > this.state.topScore
+    ) {
+      this.setState({ topScore: this.state.score });
+    }
+  }
+
   handleOnDoubleClick = imageClicked => {
     //const { id, doubleClicked } = imageClicked;
     // console.log(id);
@@ -62,6 +71,7 @@ class App extends Component {
           onDoubleClick={this.handleOnDoubleClick}
           images={this.state.images}
         />
+        <Footer />
       </div>
     );
   }
