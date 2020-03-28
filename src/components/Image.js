@@ -15,11 +15,19 @@ class Image extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.doubleClicked &&
-      this.state.doubleClicked !== prevState.doubleClicked
-    ) {
-      this.setState({ clicked: false, doubleClicked: false });
+    // if (
+    //   this.state.doubleClicked &&
+    //   this.state.doubleClicked !== prevState.doubleClicked
+    // ) {
+    //   this.setState({ clicked: false, doubleClicked: false });
+    // }
+
+    if (!this.props.userScore && this.props.userScore !== prevProps.userScore) {
+      console.log(this.props.userScore);
+      console.log(typeof this.props.userScore);
+      console.log(prevProps.userScore);
+      console.log(typeof prevProps.userScore);
+      this.setState({ clicked: false, doubleClicked: false }, () => {});
     }
   }
 

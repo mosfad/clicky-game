@@ -17,7 +17,8 @@ class App extends Component {
     // console.log(doubleClicked);
     // console.log(imageClicked);
     // console.log(imageClicked.id);
-    // console.log(imageClicked.doubleClicked);
+    console.log(imageClicked.doubleClicked);
+    console.log(typeof imageClicked.doubleClicked);
     //Get the index of the item in `images` array to update ***
     this.setState({ imageClicked }, () => {
       if (!this.state.imageClicked.doubleClicked) {
