@@ -4,9 +4,10 @@
   "private": true,
   "homepage": "https://mosfad.github.io/clicky-game/",
   "dependencies": {
+    "node-sass": "^4.13.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1",
+    "react-scripts": "^3.4.1",
     "uniqid": "^5.0.3"
   },
   "scripts": {

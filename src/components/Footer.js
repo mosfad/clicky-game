@@ -1,13 +1,15 @@
 import React from "react";
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer>
-      <div className="footer-copyright text-center py-3 bg-secondary">
-        <strong>© 2018 Copyright:</strong>
-      </div>
-    </footer>
+    <div>
+      <nav className="navbar navbar-dark bg-primary">
+        <div className="nav-item text-light footer-copyright mx-auto">
+          © 2020 Copyright: Dupe Fadina
+        </div>
+      </nav>
+    </div>
   );
-}
+};
 
 export default Footer;
