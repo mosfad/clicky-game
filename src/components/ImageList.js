@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Image from "./Image";
-import "./style.scss";
+//import "./style.css";
 
 class ImageList extends Component {
   state = {};

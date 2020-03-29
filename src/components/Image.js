@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.scss";
+//import "./style.css";
 
 class Image extends Component {
   state = {
@@ -61,7 +61,7 @@ class Image extends Component {
     return (
       <div>
         <img
-          className="single-img shadow"
+          className="single-img"
           alt="clicked-images"
           src={this.state.image}
           onClick={this.handleClick}
