@@ -54,9 +54,6 @@ class Image extends Component {
       this.setState({ doubleClicked: true }, () => {
         this.props.onClickStatus(this.state);
       });
-    } else if (clicked && doubleClicked) {
-      console.log("Image should do??????");
-      //this.setState({ clicked: false, doubleClicked: false });
     }
   };
 
@@ -64,7 +61,7 @@ class Image extends Component {
     return (
       <div>
         <img
-          className="single-img"
+          className="single-img shadow"
           alt="clicked-images"
           src={this.state.image}
           onClick={this.handleClick}
