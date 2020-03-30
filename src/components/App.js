@@ -6,6 +6,8 @@ import images from "../images.json";
 
 class App extends Component {
   state = {
+    gameStatus: "Click an image to begin!",
+    colorStatus: "light",
     score: 0,
     topScore: 0,
     images
@@ -33,11 +35,20 @@ class App extends Component {
       if (!this.state.imageClicked.doubleClicked) {
         this.incrementScores();
         const imagesArr = this.shuffleImages(this.state.images);
-        this.setState({ images: [...imagesArr] });
+        this.setState(
+          {
+            gameStatus: "You guessed correctly!",
+            images: [...imagesArr]
+          },
+          () => this.animateGameStatus()
+        );
       } else {
         //reset the game, but keep top score.
         //Get App to re-render by passing images Array(with clicked & doubleClicked properties set to false) to ImageList!!!
-        this.setState({ score: 0 });
+        this.setState(
+          { gameStatus: "You guessed incorrectly!", score: 0 },
+          () => this.animateGameStatus()
+        );
       }
     });
   };
@@ -48,6 +59,28 @@ class App extends Component {
       //figure out how to add top score in the object below............................................
       return { score: state.score + 1 };
     });
+  };
+
+  animateGameStatus = () => {
+    if (this.state.gameStatus === "You guessed correctly!") {
+      //todo:
+      //1. change text color to green(delay may not be required.)
+      //2. change text color to white after 1s
+      this.setState({ colorStatus: "success" }, () => {
+        setTimeout(this.restoreGameStatus, 300);
+      });
+    } else if (this.state.gameStatus === "You guessed incorrectly!") {
+      //todo:
+      //1. change text color to red(delay maynot be required.)
+      //2. change text color to white after 1s
+      this.setState({ colorStatus: "danger" }, () => {
+        setTimeout(this.restoreGameStatus, 300);
+      });
+    }
+  };
+
+  restoreGameStatus = () => {
+    this.setState({ colorStatus: "white" });
   };
 
   shuffleImages = arrayOfImages => {
@@ -65,7 +98,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header userScore={this.state.score} topScore={this.state.topScore} />
+        <Header
+          userScore={this.state.score}
+          topScore={this.state.topScore}
+          gameStatus={this.state.gameStatus}
+          colorStatus={this.state.colorStatus}
+        />
         <ImageList
           userScore={this.state.score}
           onDoubleClick={this.handleOnDoubleClick}

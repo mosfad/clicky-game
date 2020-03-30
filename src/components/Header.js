@@ -7,7 +7,9 @@ const Header = props => {
         <a className="navbar-brand" href="#">
           Clicky Game
         </a>
-        <h3 className="nav-item text-light">Click an image to begin!</h3>
+        <h3 className={"nav-item text-" + props.colorStatus}>
+          {props.gameStatus}
+        </h3>
         <h3 className="nav-item text-light">
           Scores: {props.userScore || 0} &ensp;|&ensp; Top Scores:{" "}
           {props.topScore || 0}
