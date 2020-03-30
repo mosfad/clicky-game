@@ -108,6 +108,7 @@ class App extends Component {
           userScore={this.state.score}
           onDoubleClick={this.handleOnDoubleClick}
           images={this.state.images}
+          colorStatus={this.state.colorStatus}
         />
         <Footer />
       </div>

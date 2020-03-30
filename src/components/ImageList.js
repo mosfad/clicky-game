@@ -17,9 +17,10 @@ class ImageList extends Component {
 
   componentDidUpdate(prevProps, prevState) {}
   render() {
+    let shakeAnimation = this.props.colorStatus === "danger" ? "add-shake" : "";
     return (
       <div className="container">
-        <div className="row">
+        <div className={`row ${shakeAnimation}`}>
           {this.props.images.map(singleImage => {
             return (
               <Image

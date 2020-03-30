@@ -1,3 +1,6 @@
+.jumbotron {
+  background: url("./Assets/pattern-728509_1920.png");
+}
 .single-img {
   padding: 5px;
   margin: 15px 20px;
@@ -10,6 +13,46 @@
   box-shadow: 3px 4px 18px 10px #b1b0b0;
   /* width: 180px;
   height: 240px; */
+}
+
+.row.add-shake {
+  animation: shake 0.25s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(1px);
+  }
+  10% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  30% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  70% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  90% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(10px);
+  }
 }
 
 .container {
@@ -25,12 +68,21 @@ div.row {
 }
 
 .bg-primary {
-  background: blue !important;
+  background: #4c4cdb !important;
 }
 
 nav {
   height: 80px;
 }
+
+a.navbar-brand,
+h3.nav-item {
+  /* display: inline-block; */
+  width: 32%;
+}
+/* .navbar {
+  justify-content: space-around;
+} */
 
 a.navbar-brand {
   font-family: sans-serif;
